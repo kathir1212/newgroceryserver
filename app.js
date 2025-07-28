@@ -25,11 +25,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 await connectCloudinary()
 
-const allowedOrigin = [
-  "http://localhost:5173",        // for local dev
-  "https://kathirvelmarketapp.netlify.app/" // deployed frontend
-];
-// const allowedOrigin = "https://kathirvelmarketapp.netlify.app/";
+// const allowedOrigin = [
+//   "http://localhost:5173",        // for local dev
+//   "https://kathirvelmarketapp.netlify.app/" // deployed frontend
+// ];
+const allowedOrigin = "https://kathirvelmarketapp.netlify.app/";
 
 
 // view engine setup
