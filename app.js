@@ -25,11 +25,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 await connectCloudinary()
 
-// const allowedOrigin = [
-//   "http://localhost:5173",        // for local dev
-//   "https://kathirvelmarketapp.netlify.app/" // deployed frontend
-// ];
-const allowedOrigin = "https://kathirvelmarketapp.netlify.app/";
+const allowedOrigin = [
+  "http://localhost:5173",        // for local dev
+  "https://kathirvelmarketapp.netlify.app/" // deployed frontend
+];
+// const allowedOrigin = "https://kathirvelmarketapp.netlify.app/";
 
 
 // view engine setup
@@ -42,7 +42,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  origin: allowedOrigin,
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl, Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS error: Not allowed"));
+    }
+  },
   credentials: true
 }));
 // Routes
