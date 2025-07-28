@@ -26,7 +26,7 @@ const app = express();
 await connectCloudinary()
 
 const allowedOrigin = [
-  "http://localhost:5173",        // for local dev
+  // "http://localhost:5173",        // for local dev
   "https://kathirvelmarketapp.netlify.app/" // deployed frontend
 ];
 // const allowedOrigin = "https://kathirvelmarketapp.netlify.app/";
