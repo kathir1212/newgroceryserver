@@ -29,7 +29,7 @@ await connectCloudinary()
 //   "http://localhost:5173",        // for local dev
 //   "https://kathirvelmarketapp.netlify.app/" // deployed frontend
 // ];
-const allowedOrigin = "https://kathirvelmarketapp.netlify.app/";
+const allowedOrigin = "https://kathirvelmarketapp.netlify.app";
 
 
 // view engine setup
@@ -42,9 +42,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({
-  origin: "https://kathirvelmarketapp.netlify.app",
+  origin: allowedOrigin,
   credentials: true
 }));
+app.use(cookieParser());
 // Routes
 app.use('/', indexRouter);
 app.use('/api/user', userRouter);

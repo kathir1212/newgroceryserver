@@ -1,7 +1,6 @@
 
  
 import Address from "../models/address.js";
-import jwt from "jsonwebtoken"
 
 
 
@@ -27,11 +26,7 @@ catch(error){
 
 export const getAddress = async (req, res) => {
   try {
-    const token = req.cookies.token;
-    if (!token) return res.status(401).json({ success: false, message: 'No token found' });
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const userId = decoded.userId;
+   
 
     const address = await Address.find({ userId });
 
