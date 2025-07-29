@@ -22,19 +22,18 @@ catch(error){
 }
 }
 
+export const getAddress = async (req,res)=>{
 
+    try{
+  const {userId} = req.body;
+  const address = await Address.find({userId})
+  res.json({success:true,address})
+    }
+    catch(error){
+  res.json({success:false , message:error.message})
 
-export const getAddress = async (req, res) => {
-  try {
-   
+    }
 
-    const address = await Address.find({ userId });
-
-    res.json({ success: true, address });
-  } catch (error) {
-    res.json({ success: false, message: error.message });
-  }
-};
-
+}
 
 
